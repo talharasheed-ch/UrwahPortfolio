@@ -8,6 +8,7 @@
   <title>Clinical Journal | Urwah Tahir</title>
   <link rel="stylesheet" href="vendor/bootstrap.min.css">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/profile.css">
 </head>
 <body>
   <svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" class="svg-definitions">
@@ -27,15 +28,20 @@
     <symbol id="ico-check" viewBox="0 0 24 24"><path d="m4 12 5 5L20 6"/></symbol>
     <symbol id="ico-x" viewBox="0 0 24 24"><path d="M5 5 19 19M19 5 5 19"/></symbol>
     <symbol id="ico-camera" viewBox="0 0 24 24"><path d="M3 7h4l2-3h6l2 3h4v13H3V7Z"/><circle cx="12" cy="13" r="3.5"/></symbol>
+    <symbol id="ico-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></symbol>
+    <symbol id="ico-edit" viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16v4ZM13.5 6.5l4 4"/></symbol>
+    <symbol id="ico-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8M18 14.3c2.1.7 3.5 2.6 3.5 5.7"/></symbol>
+    <symbol id="ico-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
     <symbol id="ico-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
   </svg>
 
   <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
   <aside class="app-sidebar" id="appSidebar" aria-label="Main navigation">
-    <div class="brand"><div class="brand-mark">ut<span>.</span></div><div><div class="brand-name">CLINICAL JOURNAL</div><div class="brand-sub">A portfolio of practice</div></div></div>
+    <div class="brand"><div class="brand-mark"><b data-bind="initialsLower">ut</b><span>.</span></div><div><div class="brand-name">CLINICAL JOURNAL</div><div class="brand-sub">A portfolio of practice</div></div></div>
     <div class="side-label">PORTFOLIO</div>
     <nav class="side-nav" aria-label="Sections">
-      <a class="side-link is-active" href="#overview"><svg class="icon"><use href="#ico-book"/></svg><span>Overview</span><span class="side-link-dot"></span></a>
+      <a class="side-link is-active" href="#profile"><svg class="icon"><use href="#ico-user"/></svg><span>Profile</span><span class="side-link-dot"></span></a>
+      <a class="side-link" href="#overview"><svg class="icon"><use href="#ico-book"/></svg><span>Overview</span><span class="side-link-dot"></span></a>
       <a class="side-link" href="#journey"><svg class="icon"><use href="#ico-calendar"/></svg><span>Weekly journal</span><span class="side-link-dot"></span></a>
       <a class="side-link" href="#gallery"><svg class="icon"><use href="#ico-grid"/></svg><span>Photo archive</span><span class="side-link-dot"></span></a>
       <a class="side-link" href="#downloads"><svg class="icon"><use href="#ico-files"/></svg><span>PDF downloads</span><span class="side-link-dot"></span></a>
@@ -43,23 +49,49 @@
     </nav>
     <div class="sidebar-spacer"></div>
     <div class="side-progress"><div class="side-progress-header"><span>CLINICAL PLACEMENT</span><span>08 / 08</span></div><div class="progress-track"><span></span></div><p>Eight documented weeks of clinical learning.</p></div>
-    <div class="side-profile"><div class="avatar">UT</div><div class="side-profile-text"><strong>Urwah Tahir</strong><span>Dental Technology · Sem 07</span></div></div>
+    <a class="side-profile" href="#profile"><div class="avatar" id="sideAvatar">UT</div><div class="side-profile-text"><strong data-bind="name">Urwah Tahir</strong><span data-bind="programLine">Dental Technology · Sem 07</span></div></a>
   </aside>
 
   <div class="site-shell">
     <header class="topbar">
       <button class="mobile-menu" id="menuButton" type="button" aria-label="Open navigation" aria-controls="appSidebar" aria-expanded="false"><svg class="icon"><use href="#ico-menu"/></svg></button>
-      <div class="topbar-path"><span>SUPERIOR UNIVERSITY</span><span class="path-slash">/</span><strong>CLINICAL MANAGEMENT</strong></div>
-      <div class="topbar-actions"><div class="topbar-year">2023 — 2027</div><button type="button" class="topbar-download" data-download="full"><svg class="icon"><use href="#ico-download"/></svg><span>Export portfolio</span></button></div>
+      <div class="topbar-path"><span data-bind="universityUpper">SUPERIOR UNIVERSITY</span><span class="path-slash">/</span><strong>CLINICAL MANAGEMENT</strong></div>
+      <div class="topbar-actions"><div class="topbar-year" data-bind="batch">2023 — 2027</div><button type="button" class="topbar-download" data-download="full"><svg class="icon"><use href="#ico-download"/></svg><span>Export portfolio</span></button></div>
     </header>
     <main>
+      <section class="profile-section section-wrap" id="profile">
+        <div class="profile-card-main reveal visible">
+          <div class="profile-photo" id="profilePhoto"><span>UT</span></div>
+          <span class="profile-kicker">STUDENT PROFILE</span>
+          <h2 data-bind="name">Urwah Tahir</h2>
+          <p class="profile-program"><span data-bind="program">BS Dental Technology</span> · <span data-bind="semester">7th Semester</span></p>
+          <div class="profile-id-chip"><span>ID</span><strong data-bind="id">SU91_BSDTM_F23_042</strong></div>
+          <div class="profile-uni"><svg class="icon"><use href="#ico-pin"/></svg><span data-bind="university">Superior University Lahore</span></div>
+          <div class="profile-actions">
+            <button type="button" class="profile-edit-btn" data-edit-profile><svg class="icon"><use href="#ico-edit"/></svg>Edit profile</button>
+            <button type="button" class="profile-export-btn" data-download="full"><svg class="icon"><use href="#ico-download"/></svg>Export PDF</button>
+          </div>
+        </div>
+        <div class="profile-info reveal visible">
+          <div class="section-label">00 <span></span> MEET THE STUDENT</div>
+          <h2 class="profile-heading">Hello, I am <em data-bind="name">Urwah Tahir</em>.</h2>
+          <p class="profile-about" data-bind="about"></p>
+          <div class="profile-block-title"><svg class="icon"><use href="#ico-book"/></svg>ACADEMIC DETAILS</div>
+          <div class="profile-facts" id="profileDetails"></div>
+          <div class="profile-block-title"><svg class="icon"><use href="#ico-pin"/></svg>CLINICAL PLACEMENT</div>
+          <div class="profile-facts" id="profilePlacement"></div>
+          <div class="profile-block-title"><svg class="icon"><use href="#ico-users"/></svg>SUPERVISION &amp; FACULTY <button type="button" class="inline-link" data-edit-profile>Edit names <svg class="icon"><use href="#ico-edit"/></svg></button></div>
+          <div class="staff-grid" id="profileStaff"></div>
+        </div>
+      </section>
+
       <section class="hero section-wrap" id="overview">
         <div class="hero-copy reveal visible">
           <div class="eyebrow"><span class="eyebrow-bar"></span>CLINICAL MANAGEMENT PORTFOLIO <span class="eyebrow-year">/ 2025</span></div>
           <h1>Learning the art<br>of <em>better care.</em></h1>
           <p class="hero-description">An eight-week record of clinical observation, hands-on learning and the everyday details that shape a dental technologist.</p>
           <div class="hero-actions"><a class="primary-btn" href="#journey">Explore my journal <svg class="icon"><use href="#ico-arrow-up-right"/></svg></a><button class="text-btn" type="button" data-download="full"><svg class="icon"><use href="#ico-download"/></svg>Download full PDF</button></div>
-          <div class="hero-byline"><span class="byline-rule"></span><div><span>DOCUMENTED BY</span><strong>Urwah Tahir <i>·</i> BS Dental Technology</strong></div></div>
+          <div class="hero-byline"><span class="byline-rule"></span><div><span>DOCUMENTED BY</span><strong><b data-bind="name">Urwah Tahir</b> <i>·</i> <b data-bind="program">BS Dental Technology</b></strong></div></div>
         </div>
         <div class="hero-visual reveal delay-1 visible">
           <div class="hero-visual-frame"><div class="hero-corner-label">FIELD NOTES <span>01—08</span></div><img id="heroMainImg" alt="Dental clinic work area and equipment" class="hero-main-photo"><div class="hero-img-shade"></div><div class="hero-photo-label"><span>01 / PLACEMENT JOURNAL</span><strong>Healthy Smile<br>Dental Clinic</strong></div></div>
@@ -77,7 +109,7 @@
 
       <section class="intro-block section-wrap reveal" aria-label="Portfolio introduction">
         <div class="section-label">01 <span></span> ABOUT THIS PLACEMENT</div>
-        <div class="intro-columns"><div><h2>A place to learn.<br><em>A practice to grow.</em></h2><p>From infection control to orthodontics, this journal follows eight clinical rotations and the skills, observation and patient-care practices developed along the way.</p></div><div class="clinic-card"><div class="clinic-icon"><svg class="icon"><use href="#ico-pin"/></svg></div><span class="clinic-mini">PLACEMENT LOCATION</span><h3>Healthy Smile<br>Dental Clinic</h3><div class="clinic-detail"><svg class="icon"><use href="#ico-pin"/></svg>Shershah Link Road, Lahore</div><div class="clinic-detail"><svg class="icon"><use href="#ico-calendar"/></svg>Joined 01 September 2025</div><div class="clinic-card-rule"></div><div class="clinic-owner">CLINIC OWNER <strong>M Faizan</strong></div></div></div>
+        <div class="intro-columns"><div><h2>A place to learn.<br><em>A practice to grow.</em></h2><p>From infection control to orthodontics, this journal follows eight clinical rotations and the skills, observation and patient-care practices developed along the way.</p></div><div class="clinic-card"><div class="clinic-icon"><svg class="icon"><use href="#ico-pin"/></svg></div><span class="clinic-mini">PLACEMENT LOCATION</span><h3 data-bind="clinicName">Healthy Smile Dental Clinic</h3><div class="clinic-detail"><svg class="icon"><use href="#ico-pin"/></svg><span data-bind="clinicAddress">Shershah Link Road, Lahore</span></div><div class="clinic-detail"><svg class="icon"><use href="#ico-calendar"/></svg><span data-bind="clinicJoined">Joined 01 September 2025</span></div><div class="clinic-card-rule"></div><div class="clinic-owner">CLINIC OWNER <strong data-bind="clinicOwner">M Faizan</strong></div></div></div>
       </section>
 
       <section class="journal-section section-wrap" id="journey">
@@ -96,13 +128,13 @@
       </section>
 
       <section class="export-section section-wrap" id="downloads">
-        <div class="section-label reveal">04 <span></span> DOCUMENTS & EXPORTS</div><div class="export-feature reveal"><div class="export-feature-art"><span>THE COMPLETE RECORD</span><div class="cover-mini"><span>SUPERIOR<br>UNIVERSITY</span><strong>Clinical<br><em>Management</em><br>Portfolio</strong><small>URWAH TAHIR · SEMESTER 07</small><div class="cover-mini-line"></div><span>2025</span></div></div><div class="export-feature-copy"><div class="export-tag"><span class="pulse-dot"></span> READY TO EXPORT</div><h2>Your complete<br><em>clinical record.</em></h2><p>Download a well-formatted A4 portfolio with your introduction, career goal, all eight clinical weeks, photographic evidence and conclusion.</p><button type="button" class="primary-btn download-full" data-download="full">Download complete portfolio <svg class="icon"><use href="#ico-download"/></svg></button><div class="export-feature-note"><svg class="icon"><use href="#ico-check"/></svg> Photos embedded · A4 format · No account needed</div></div></div>
+        <div class="section-label reveal">04 <span></span> DOCUMENTS & EXPORTS</div><div class="export-feature reveal"><div class="export-feature-art"><span>THE COMPLETE RECORD</span><div class="cover-mini"><span>SUPERIOR<br>UNIVERSITY</span><strong>Clinical<br><em>Management</em><br>Portfolio</strong><small data-bind="coverLine">URWAH TAHIR · SEMESTER 07</small><div class="cover-mini-line"></div><span>2025</span></div></div><div class="export-feature-copy"><div class="export-tag"><span class="pulse-dot"></span> READY TO EXPORT</div><h2>Your complete<br><em>clinical record.</em></h2><p>Choose from five PDF templates and export with or without the student profile page. A well-formatted A4 portfolio with your introduction, career goal, all eight clinical weeks, photographic evidence and conclusion.</p><button type="button" class="primary-btn download-full" data-download="full">Download complete portfolio <svg class="icon"><use href="#ico-download"/></svg></button><div class="export-feature-note"><svg class="icon"><use href="#ico-check"/></svg> 5 templates · With / without profile · Photos embedded</div></div></div>
         <div class="export-weekly reveal"><div class="export-weekly-heading"><div><span class="section-kicker">PREFER A SINGLE WEEK?</span><h3>Individual week reports</h3></div><span>ONE PDF FOR EACH ROTATION</span></div><div id="pdfWeekList" class="pdf-week-list"></div></div>
       </section>
 
       <section class="reflection-section section-wrap" id="reflection"><div class="section-label reveal">05 <span></span> REFLECTIONS & DIRECTION</div><div class="reflection-heading reveal"><span class="section-kicker">LOOKING BACK, MOVING FORWARD</span><h2>What the experience<br><em>means to me.</em></h2></div><div class="reflection-grid reveal"><div class="reflection-card"><span class="reflection-index">01 / PURPOSE</span><h3>Why I made<br>this portfolio</h3><p id="purposeText"></p><span class="reflection-corner">↗</span></div><div class="reflection-card light"><span class="reflection-index">02 / CAREER GOAL</span><h3>The work<br>I'm growing into</h3><p id="goalText"></p><span class="reflection-corner">↗</span></div></div><div class="conclusion-card reveal"><div><span class="section-kicker">A FINAL NOTE</span><h3>Continuing to learn,<br><em>committed to care.</em></h3></div><p id="conclusionText"></p></div></section>
     </main>
-    <footer class="footer"><div class="footer-mark">ut<span>.</span></div><div class="footer-left"><strong>Urwah Tahir</strong><span>BS Dental Technology · Superior University Lahore</span></div><div class="footer-center"><span>CLINICAL MANAGEMENT PORTFOLIO</span><span>STUDENT ID: SU91_BSDTM_F23_042</span></div><a href="mailto:su91_bsdtm_f23_042@superior.edu.pk" class="footer-contact">Get in touch <svg class="icon"><use href="#ico-arrow-up-right"/></svg></a></footer>
+    <footer class="footer"><div class="footer-mark"><b data-bind="initialsLower">ut</b><span>.</span></div><div class="footer-left"><strong data-bind="name">Urwah Tahir</strong><span><b data-bind="program">BS Dental Technology</b> · <b data-bind="university">Superior University Lahore</b></span></div><div class="footer-center"><span>CLINICAL MANAGEMENT PORTFOLIO</span><span>STUDENT ID: <b data-bind="id">SU91_BSDTM_F23_042</b></span></div><a href="mailto:su91_bsdtm_f23_042@superior.edu.pk" data-bind-mail class="footer-contact">Get in touch <svg class="icon"><use href="#ico-arrow-up-right"/></svg></a></footer>
   </div>
 
   <button id="toTop" class="to-top" type="button" aria-label="Back to top"><svg class="icon"><use href="#ico-arrow-up-right"/></svg></button>
@@ -110,10 +142,38 @@
   <div class="export-overlay" id="exportOverlay" hidden role="status" aria-live="polite"><div class="export-progress-card"><div class="export-spinner"></div><strong>Preparing your PDF</strong><span id="exportProgressText">Arranging clinical notes and photographs…</span></div></div>
 
   <div class="modal fade lightbox-modal" id="photoModal" tabindex="-1" aria-label="Photo viewer" aria-hidden="true"><div class="modal-dialog modal-dialog-centered modal-xl"><div class="modal-content"><div class="lightbox-top"><div><span id="lightboxCounter">01 / 24</span><strong id="lightboxWeek">CLINICAL ARCHIVE</strong></div><button class="lightbox-close" type="button" data-bs-dismiss="modal" aria-label="Close image"><svg class="icon"><use href="#ico-x"/></svg></button></div><div class="lightbox-image-area"><button id="lightboxPrev" type="button" class="lightbox-nav lightbox-prev" aria-label="Previous photo"><svg class="icon"><use href="#ico-arrow-left"/></svg></button><img id="lightboxImg" alt="Clinical photograph"><button id="lightboxNext" type="button" class="lightbox-nav lightbox-next" aria-label="Next photo"><svg class="icon"><use href="#ico-arrow-right"/></svg></button></div><div class="lightbox-caption"><div><strong id="lightboxTitle"></strong><p id="lightboxSubtitle"></p></div><button id="lightboxSave" class="lightbox-save" type="button"><svg class="icon"><use href="#ico-download"/></svg>Save image</button></div></div></div></div>
+
+  <div class="modal fade app-modal" id="profileModal" tabindex="-1" aria-labelledby="profileModalTitle" aria-hidden="true"><div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg"><form class="modal-content" id="profileForm" novalidate>
+    <div class="app-modal-head"><div><span class="section-kicker">SAVED IN THIS BROWSER</span><h3 id="profileModalTitle">Edit student profile</h3></div><button class="lightbox-close" type="button" data-bs-dismiss="modal" aria-label="Close"><svg class="icon"><use href="#ico-x"/></svg></button></div>
+    <div class="modal-body app-modal-body">
+      <div class="photo-editor"><div class="photo-preview" id="photoPreview"></div><div><strong>Profile photo</strong><p>Square crop is applied automatically. JPG or PNG.</p><div class="photo-editor-actions"><label class="secondary-btn small-btn"><input type="file" id="photoInput" accept="image/*" hidden><svg class="icon"><use href="#ico-camera"/></svg>Upload photo</label><button type="button" class="text-btn" id="photoRemove">Remove</button></div></div></div>
+      <div id="profileFormFields"></div>
+      <div class="form-group-title">Teachers <button type="button" class="inline-link" id="addTeacher"><svg class="icon"><use href="#ico-plus"/></svg> Add teacher</button></div>
+      <div id="teacherRows" class="teacher-rows"></div>
+    </div>
+    <div class="deploy-hint"><svg class="icon"><use href="#ico-info"/></svg><span><strong>Save profile</strong> sirf is browser mein save karta hai. Sab visitors ko dikhane ke liye <strong>Save for website</strong> dabayein, download hui <code>content.js</code> ko <code>js/</code> folder mein replace karke push kar dein.</span></div>
+    <div class="app-modal-foot"><button type="button" class="text-btn" id="profileReset">Reset to original</button><div class="foot-actions"><button type="button" class="secondary-btn" id="profileDeploy"><svg class="icon"><use href="#ico-download"/></svg>Save for website (content.js)</button><button type="submit" class="primary-btn">Save profile <svg class="icon"><use href="#ico-check"/></svg></button></div></div>
+  </form></div></div>
+
+  <div class="modal fade app-modal" id="exportModal" tabindex="-1" aria-labelledby="exportModalTitle" aria-hidden="true"><div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg"><form class="modal-content" id="exportForm">
+    <div class="app-modal-head"><div><span class="section-kicker" id="exportTargetLabel">COMPLETE PORTFOLIO</span><h3 id="exportModalTitle">Export as PDF</h3></div><button class="lightbox-close" type="button" data-bs-dismiss="modal" aria-label="Close"><svg class="icon"><use href="#ico-x"/></svg></button></div>
+    <div class="modal-body app-modal-body">
+      <div class="form-group-title">1. Choose a template</div>
+      <div class="template-grid" id="templateGrid"></div>
+      <div class="form-group-title">2. Student profile page</div>
+      <div class="profile-choice">
+        <label><input type="radio" name="pdfProfile" value="with"><span><svg class="icon"><use href="#ico-user"/></svg><strong>With profile</strong><small>Adds the photo, student information, superintendent &amp; teachers at the start of the PDF</small></span></label>
+        <label><input type="radio" name="pdfProfile" value="without"><span><svg class="icon"><use href="#ico-files"/></svg><strong>Without profile</strong><small>Only the portfolio content, no photo or profile page</small></span></label>
+      </div>
+    </div>
+    <div class="app-modal-foot"><span class="export-foot-note"><svg class="icon"><use href="#ico-check"/></svg>Generated in your browser · A4</span><button type="submit" class="primary-btn">Export PDF <svg class="icon"><use href="#ico-download"/></svg></button></div>
+  </form></div></div>
   <script src="vendor/bootstrap.bundle.min.js"></script>
   <script src="js/photo-data.js"></script>
   <script src="js/content.js"></script>
+  <script src="js/profile.js"></script>
   <script src="js/pdf-export.js"></script>
+  <script src="js/export-dialog.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>

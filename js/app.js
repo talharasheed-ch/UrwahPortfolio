@@ -48,7 +48,7 @@
   $('#weekSearch').addEventListener('input',e=>renderWeekList(e.target.value));
   $('#prevWeek').addEventListener('click',()=>setWeek(activeWeek-1));
   $('#nextWeek').addEventListener('click',()=>setWeek(activeWeek+1));
-  $('#weekPdfButton').addEventListener('click',()=>window.ClinicalPDF.export(activeWeek));
+  $('#weekPdfButton').addEventListener('click',()=>window.ExportDialog.open(activeWeek));
   $('#detailViewAll').addEventListener('click',()=>{$('#galleryFilter').value=String(activeWeek);renderGallery();$('#gallery').scrollIntoView({behavior:'smooth'});});
 
   const galleryFilter=$('#galleryFilter');
@@ -69,7 +69,7 @@
     $('#lightboxImg').src=photoSrc(p.id);$('#lightboxImg').alt=p.caption;
     $('#lightboxCounter').textContent=pad(currentPhoto+1)+' / '+pad(viewedPhotos.length);
     $('#lightboxWeek').textContent='WEEK '+pad(p.week.id)+' · '+p.week.short.toUpperCase();
-    $('#lightboxTitle').textContent=p.caption;$('#lightboxSubtitle').textContent='Clinical photograph '+pad(p.id)+' · Healthy Smile Dental Clinic';
+    $('#lightboxTitle').textContent=p.caption;$('#lightboxSubtitle').textContent='Clinical photograph '+pad(p.id)+' · '+portfolio.clinic.name;
     $('#lightboxPrev').disabled=viewedPhotos.length<2;$('#lightboxNext').disabled=viewedPhotos.length<2;
   }
   function changeLightbox(delta){if(viewedPhotos.length<2)return;currentPhoto=(currentPhoto+delta+viewedPhotos.length)%viewedPhotos.length;renderLightbox();}
@@ -80,12 +80,12 @@
     if(e.key==='ArrowLeft'){e.preventDefault();changeLightbox(-1);}
   });
   $('#lightboxSave').addEventListener('click',()=>{
-    const p=viewedPhotos[currentPhoto],a=document.createElement('a');a.href=photoSrc(p.id);a.download='Urwah_Clinical_Photo_'+pad(p.id)+'.jpg';document.body.append(a);a.click();a.remove();showAppToast('Photo saved','Photo '+pad(p.id)+' has been downloaded.');
+    const p=viewedPhotos[currentPhoto],a=document.createElement('a');a.href=photoSrc(p.id);a.download=portfolio.student.name.replace(/[^A-Za-z0-9]+/g,'_')+'_Clinical_Photo_'+pad(p.id)+'.jpg';document.body.append(a);a.click();a.remove();showAppToast('Photo saved','Photo '+pad(p.id)+' has been downloaded.');
   });
 
   const weeklyList=$('#pdfWeekList');
   weeklyList.innerHTML=portfolio.weeks.map(w=>`<div class="pdf-week-row"><div class="pdf-week-info"><span class="pdf-week-index">${pad(w.id)}</span><div><strong>${escapeHTML(w.title)}</strong><small>${w.photos.length} PHOTOGRAPH${w.photos.length>1?'S':''} · CLINICAL NOTES</small></div></div><button type="button" data-download="${w.id}" class="pdf-week-action"><svg class="icon"><use href="#ico-download"/></svg>Download PDF</button></div>`).join('');
-  document.querySelectorAll('[data-download]').forEach(b=>b.addEventListener('click',()=>window.ClinicalPDF.export(b.dataset.download)));
+  document.querySelectorAll('[data-download]').forEach(b=>b.addEventListener('click',()=>window.ExportDialog.open(b.dataset.download)));
 
   function showAppToast(title,description,isError=false){
     $('#toastTitle').textContent=title;$('#toastMessage').textContent=description;

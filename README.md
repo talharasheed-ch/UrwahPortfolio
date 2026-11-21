@@ -20,6 +20,15 @@ You may also serve the website on localhost or deploy it directly to any static 
 - PDF generation runs locally in JavaScript and does not depend on a CDN or online service.
 - Bootstrap navigation/modal, mobile menu, scrolling section navigation, toast feedback and reduced-motion accessibility.
 
+## Student profile & export templates
+
+- The website opens with a **Profile** section: photo, student information, clinical placement, superintendent and teachers.
+- **Edit profile** lets you change the photo, student details, superintendent name and teachers' names (add/remove). Changes are saved in that browser only (localStorage). No backend is used.
+- **Make changes live for everyone:** in Edit profile click **Save for website (content.js)**. It downloads a complete `content.js` with all details and the photo embedded. Replace `js/content.js` with it, commit and push, and the deployed site shows the new profile to every visitor. (Alternatively edit `js/content.js` by hand and put the picture at `assets/profile.jpg`.)
+- Every **Export / Download PDF** button opens a dialog with two choices:
+  1. **Template**: Clinical Green, Royal Navy, Elegant Rose, Dental Bio-Tech or Modern Minimal.
+  2. **With profile / Without profile**. "With profile" adds the photo to the cover and a presentation-style student profile page at the start of the PDF.
+
 ## Portfolio data and photos
 
 - Edit `js/content.js` for student details, clinic details, portfolio text, week learning notes, focus areas and image-to-week mapping.

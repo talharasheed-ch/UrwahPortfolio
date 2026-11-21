@@ -7,8 +7,19 @@ window.PORTFOLIO = {
     semester: '7th Semester',
     batch: '2023–2027',
     university: 'Superior University Lahore',
-    email: 'su91_bsdtm_f23_042@superior.edu.pk'
+    email: 'su91_bsdtm_f23_042@superior.edu.pk',
+    /* Profile photo: put the picture at assets/profile.jpg (or change this path).
+       It can also be uploaded from the website using "Edit profile". */
+    photo: 'assets/profile.jpg',
+    about: 'A Dental Technology student at Superior University Lahore with a keen interest in clinical practice, prosthetic work and patient care. This portfolio documents my supervised clinical placement and the skills I developed week by week.'
   },
+  /* Supervision & faculty details shown on the profile page and in the PDF profile.
+     Empty names are hidden in the PDF. All of these can also be edited on the website. */
+  supervisor: { title: 'Clinical Superintendent', name: '' },
+  teachers: [
+    { role: 'Course Teacher — Clinical Management', name: '' },
+    { role: 'Clinical Supervisor', name: '' }
+  ],
   clinic: {
     name: 'Healthy Smile Dental Clinic',
     owner: 'M Faizan',
